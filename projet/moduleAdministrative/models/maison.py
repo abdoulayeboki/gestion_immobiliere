@@ -2,7 +2,7 @@ from django.db import models
 from .bienImmobilier import BienImmobilier
 
 class Maison(BienImmobilier):
-    nbrPiece = models.IntegerField()
+    nbrPiece = models.IntegerField(null=True)
     typePiece = models.CharField(max_length=200)
     jardin = models.BooleanField(default=False)
 
