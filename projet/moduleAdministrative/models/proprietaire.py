@@ -14,6 +14,6 @@ class Proprietaire(models.Model):
         
     def __str__(self):
         return self.prenom
-    # def save(self, *args, **kwargs):
-    #     # self.profil = 'AUTRE'
-    #     super().save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        self.numero = self.nom
+        super().save(*args, **kwargs)
