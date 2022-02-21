@@ -1,7 +1,0 @@
-env/
-.metals/
-.vscode/
-null/
-*/__pycache__/*
-media/
-*/media/*
