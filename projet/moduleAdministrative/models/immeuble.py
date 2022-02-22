@@ -26,6 +26,7 @@ class Immeuble(models.Model):
         return self.numero
     def save(self, *args, **kwargs):
         if not self.numero:
-            numero = "IMMEUBLE_"+"%03d" % (Immeuble.objects.count()+1,)
+            lastApp = Immeuble.objects.latest('id')
+            numero = "IMM_"+"%06d" % (lastApp.id+1,)
             self.numero = numero
         super().save(*args, **kwargs)

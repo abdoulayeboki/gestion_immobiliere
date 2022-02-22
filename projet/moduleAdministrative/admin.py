@@ -33,7 +33,7 @@ class AppartementAdmin(admin.ModelAdmin):
     )
 class ImmeubleAdmin(admin.ModelAdmin):
      exclude = ('numero',)
-     list_display   = ('numero', 'nomImmeuble', 'categorie','proprietaire')
+     list_display   = ('numero', 'nomImmeuble', 'categorie','proprietaire','id')
      list_filter    = ('zone','categorie',)
      search_fields  = ('numero', 'nomImmeuble','categorie',)
      fieldsets = (

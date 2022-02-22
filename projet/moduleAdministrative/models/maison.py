@@ -14,7 +14,8 @@ class Maison(BienImmobilier):
         return self.typePiece
     def save(self, *args, **kwargs):
         if not self.numero:
-            numero = "MAISON_"+"%04d" % (Maison.objects.count()+1,)
+            lastMaison = Maison.objects.latest('id')
+            numero = "M_"+"%06d" % (lastMaison.id+1,)
             self.numero = numero
         super().save(*args, **kwargs)
     def clean(self):

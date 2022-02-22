@@ -18,14 +18,16 @@ class Appartement(BienImmobilier):
         # unique_together = [['cni'],['user']]
         
     def __str__(self):
-        return self.typeAppartement
+        return self.numero
     def save(self, *args, **kwargs):
         self.adresse = self.immeuble.adresse
         self.zone = self.immeuble.zone
         self.proprietaire = self.immeuble.proprietaire
         self.etat = self.immeuble.etat
+        print()
         if not self.numero:
-            numero = "APPARTEMENT_"+"%04d" % (Appartement.objects.count()+1,)
+            lastApp = Appartement.objects.latest('id')
+            numero = "APP_"+"%06d" % (lastApp.id+1,)
             self.numero = numero
         super().save(*args, **kwargs) 
     # def clean(self):

@@ -8,3 +8,4 @@ projet/*/*/*/__pycache__/
 projet/*/migrations/
 media/
 projet/db.sqlite3
+projet/admin-interface/
