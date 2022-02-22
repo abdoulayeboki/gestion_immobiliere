@@ -13,42 +13,50 @@ class ProprietaireAdmin(admin.ModelAdmin):
      exclude = ('numero',)
      fieldsets = (
         ("Information Personnelle", {
-            'fields': (('nom', 'prenom'),('telephon','email'),('adresse'))
+            'fields': ('nom', 'prenom','telephon','email','adresse')
         }),
     )
      list_display   = ('numero','nom', 'prenom','telephon','email')
-     search_fields  = ('numero', 'nom', 'prenom')
+     search_fields  = ('numero', 'nom', 'prenom','telephon',)
 class AppartementAdmin(admin.ModelAdmin):
-     exclude = ('zone','etat','adresse','numero')
-     list_display   = ('numero','etat','adresse')
-     list_filter    = ('immeuble__numero',)
-     search_fields  = ('numero',)
+     exclude = ('zone','etat','adresse','numero','proprietaire')
+     list_display   = ('numero','nomBien','prixMensuel','chargeMensuel','immeuble','proprietaire')
+     list_filter    = ('immeuble__numero','statut','zone')
+     search_fields  = ('numero','nomBien')
+     fieldsets = (
+        ("Informations obligatoires", {
+            'fields': ('nomBien','typeAppartement','niveau','immeuble','prixMensuel')
+        }), 
+        ("Informations non obligatoires", {
+            'fields': ('chargeMensuel','photo','description',)
+        }),
+    )
 class ImmeubleAdmin(admin.ModelAdmin):
      exclude = ('numero',)
-     list_display   = ('numero', 'nomImmeuble', 'proprietaire')
-     list_filter    = ('proprietaire__numero',)
-     search_fields  = ('numero', 'nomImmeuble')
+     list_display   = ('numero', 'nomImmeuble', 'categorie','proprietaire')
+     list_filter    = ('zone','categorie',)
+     search_fields  = ('numero', 'nomImmeuble','categorie',)
      fieldsets = (
-        ("Information Personnelle", {
-            'fields': (('nomImmeuble', 'photo',),('etat','categorie','proprietaire'),('adresse','zone',),('description'))
+        ("Informations obligatoires", {
+            'fields': ('nomImmeuble','zone','categorie','proprietaire','adresse')
+        }), 
+        ("Informations non obligatoires", {
+            'fields': ('etat','photo','description',)
         }),
     )
 class MaisonAdmin(admin.ModelAdmin):
      exclude = ('numero',)
-     list_display   = ('numero', 'proprietaire')
-     list_filter    = ('proprietaire__numero',)
+     list_display   = ('numero','nomBien','prixMensuel','chargeMensuel','proprietaire')
+     list_filter    = ('proprietaire__numero','statut','zone')
      search_fields  = ('numero', 'nomBien')
      fieldsets = (
-        ("Information Personnelle", {
-            'fields': (('etat','zone',),('nbrPiece','proprietaire'),'typePiece',)
+        ("Informations obligatoires", {
+            'fields': ('nomBien','zone','nbrPiece','typePiece','proprietaire','prixMensuel')
+        }), 
+        ("Informations non obligatoires", {
+            'fields': ('chargeMensuel','etat','photo','description',)
         }),
     )
-# class FiliereAdmin(admin.ModelAdmin):
-#      exclude = ('code',)
-#      list_display   = ('code', 'nom', 'departement')
-#      list_filter    = ('departement',)
-#      search_fields  = ('code', 'nom')
-
 
 
 admin.site.register(Zone)

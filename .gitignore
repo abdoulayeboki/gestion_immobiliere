@@ -7,4 +7,4 @@ projet/*/*/__pycache__/
 projet/*/*/*/__pycache__/
 projet/*/migrations/
 media/
-*/media/*
+projet/db.sqlite3

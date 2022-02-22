@@ -15,5 +15,7 @@ class Proprietaire(models.Model):
     def __str__(self):
         return self.prenom
     def save(self, *args, **kwargs):
-        self.numero = self.nom
+        if not self.numero:
+            numero = "PROPRIETAIRE_"+"%04d" % (Proprietaire.objects.count()+1,)
+            self.numero = numero
         super().save(*args, **kwargs)

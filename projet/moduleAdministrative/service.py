@@ -1,9 +1,12 @@
 import math
 from typing import TypeVar
 
+# from .appartement import Appartement
+
 # from .models.appartement import Appartement
 
-T = TypeVar("T")
-def calculNumero(container: T):
+# T = TypeVar("T")
+def calculNumero(nbr,lettre):
     # print(Appartement.objects.count())
-    return container
+    # format = "%05d" % (Appartement.objects.count(),)
+    return lettre + format
