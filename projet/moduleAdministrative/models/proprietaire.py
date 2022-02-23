@@ -16,7 +16,10 @@ class Proprietaire(models.Model):
         return self.prenom
     def save(self, *args, **kwargs):
         if not self.numero:
-            lastPro = Proprietaire.objects.latest('id')
-            numero = "PRO_"+"%06d" % (lastPro.id+1,)
+            if  Proprietaire.objects.count() !=0: #si la table est vide
+                last = Proprietaire.objects.latest('id')
+                numero = "PRO_"+"%06d" % (last.id+1,)
+            else:
+                numero = "PRO_"+"%06d" % (1,)
             self.numero = numero
         super().save(*args, **kwargs)

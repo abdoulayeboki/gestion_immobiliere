@@ -26,8 +26,11 @@ class Appartement(BienImmobilier):
         self.etat = self.immeuble.etat
         print()
         if not self.numero:
-            lastApp = Appartement.objects.latest('id')
-            numero = "APP_"+"%06d" % (lastApp.id+1,)
+            if  Appartement.objects.count() !=0: #si la table est vide
+                last = Appartement.objects.latest('id')
+                numero = "APP_"+"%06d" % (last.id+1,)
+            else:
+                numero = "APP_"+"%06d" % (1,)
             self.numero = numero
         super().save(*args, **kwargs) 
     # def clean(self):
