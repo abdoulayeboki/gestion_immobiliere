@@ -10,7 +10,7 @@ def upload_path(instance, filename):
 class BienImmobilier(models.Model):
     numero = models.CharField(max_length=20, unique=True)
     nomBien = models.CharField(max_length=100)    
-    prixMensuel = models.FloatField()
+    prixMensuel = models.FloatField(default=0)
     chargeMensuel = models.FloatField(default=0)
     statut = models.BooleanField(default=False)
     photo = models.ImageField(blank=True,null=True, upload_to=upload_path) 
@@ -29,7 +29,7 @@ class BienImmobilier(models.Model):
     #     super().save(*args, **kwargs) 
     def clean(self):
         from django.core.exceptions import ValidationError
-        if self.chargeMensuel >= self.prixMensuel:
+        if self.chargeMensuel > self.prixMensuel:
             raise ValidationError('la charge mensuelle ne devrait pas etre supérieur au prix mensuel')
         if self.prixMensuel <10000:
             raise ValidationError('le prix doit etre supérieur à 10000')
