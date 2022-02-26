@@ -9,7 +9,7 @@ from django.core.exceptions import ValidationError,FieldError
 # 
 class Appartement(BienImmobilier):
     typeAppartement = models.CharField(max_length=6,choices= [(t.value, t.value) for t in TypeAppartement])
-    niveau = models.CharField(max_length=10,choices= [(n.value, n.value) for n in Niveau])
+    niveau = models.CharField(max_length=50,choices= [(n.value, n.value) for n in Niveau])
     immeuble = models.ForeignKey(Immeuble,on_delete=models.CASCADE)
     
     

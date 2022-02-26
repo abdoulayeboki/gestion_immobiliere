@@ -25,10 +25,10 @@ class BienImmobilier(models.Model):
         return self.numero
     # def save(self, *args, **kwargs):
     #     super().save(*args, **kwargs) 
-    def clean(self):
-        from django.core.exceptions import ValidationError
-        if self.chargeMensuel > self.prixMensuel:
-            raise ValidationError('la charge mensuelle ne devrait pas etre supérieur au prix mensuel')
-        if self.prixMensuel <10000:
-            raise ValidationError('le prix doit etre supérieur à 10000')
+    # def clean(self):
+    #     from django.core.exceptions import ValidationError
+    #     if self.chargeMensuel > self.prixMensuel:
+    #         raise ValidationError('la charge mensuelle ne devrait pas etre supérieur au prix mensuel')
+    #     if self.prixMensuel <10000:
+    #         raise ValidationError('le prix doit etre supérieur à 10000')
     

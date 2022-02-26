@@ -1,5 +1,4 @@
 from django.contrib import admin
-
 # from .models.bienImmobilier import BienImmobilier
 from .models.proprietaire import Proprietaire
 from .models.zone import Zone
@@ -20,7 +19,7 @@ class ProprietaireAdmin(admin.ModelAdmin):
      search_fields  = ('numero', 'nom', 'prenom','telephon',)
 class AppartementAdmin(admin.ModelAdmin):
      exclude = ('zone','etat','adresse','numero','proprietaire')
-     list_display   = ('numero','nomBien','immeuble','proprietaire')
+     list_display   = ('numero','nomBien','immeuble','proprietaire','zone')
      list_filter    = ('immeuble__numero','statut','zone')
      search_fields  = ('numero','nomBien')
      fieldsets = (
@@ -33,7 +32,7 @@ class AppartementAdmin(admin.ModelAdmin):
     )
 class ImmeubleAdmin(admin.ModelAdmin):
      exclude = ('numero',)
-     list_display   = ('numero', 'nomImmeuble', 'categorie','proprietaire','id')
+     list_display   = ('numero', 'nomImmeuble', 'categorie','proprietaire','zone')
      list_filter    = ('zone','categorie',)
      search_fields  = ('numero', 'nomImmeuble','categorie',)
      fieldsets = (
@@ -46,7 +45,7 @@ class ImmeubleAdmin(admin.ModelAdmin):
     )
 class MaisonAdmin(admin.ModelAdmin):
      exclude = ('numero',)
-     list_display   = ('numero','nomBien','proprietaire')
+     list_display   = ('numero','nomBien','proprietaire','zone')
      list_filter    = ('proprietaire__numero','statut','zone')
      search_fields  = ('numero', 'nomBien')
      fieldsets = (
@@ -57,7 +56,6 @@ class MaisonAdmin(admin.ModelAdmin):
             'fields': ('etat','photo','description',)
         }),
     )
-
 
 admin.site.register(Zone)
 # admin.site.register(BienImmobilier)

@@ -29,3 +29,4 @@ les lien utils
     la documentation de l'api grace à ce lien  https://drf-yasg.readthedocs.io/en/stable/readme.html
 ------------------------------------------------------------------------------------------------------------------------
 
+python manage.py createsuperuser --username admin --email admin@gmail.com
