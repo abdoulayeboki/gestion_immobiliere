@@ -18,13 +18,13 @@ class ProprietaireAdmin(admin.ModelAdmin):
      list_display   = ('numero','nom', 'prenom','telephon','email')
      search_fields  = ('numero', 'nom', 'prenom','telephon',)
 class AppartementAdmin(admin.ModelAdmin):
-     exclude = ('zone','etat','adresse','numero','proprietaire')
-     list_display   = ('numero','nomBien','immeuble','proprietaire','zone')
+     exclude = ('zone','etat','adresse','numero','proprietaire','reference')
+     list_display   = ('numero','reference','immeuble','proprietaire','zone')
      list_filter    = ('immeuble__numero','statut','zone')
-     search_fields  = ('numero','nomBien')
+     search_fields  = ('numero','reference')
      fieldsets = (
         ("Informations obligatoires", {
-            'fields': ('nomBien','typeAppartement','niveau','immeuble')
+            'fields': ('typeAppartement','niveau','immeuble')
         }), 
         ("Informations non obligatoires", {
             'fields': ('photo','description',)
@@ -32,12 +32,12 @@ class AppartementAdmin(admin.ModelAdmin):
     )
 class ImmeubleAdmin(admin.ModelAdmin):
      exclude = ('numero',)
-     list_display   = ('numero', 'nomImmeuble', 'categorie','proprietaire','zone')
+     list_display   = ('numero', 'reference', 'categorie','proprietaire','zone')
      list_filter    = ('zone','categorie',)
-     search_fields  = ('numero', 'nomImmeuble','categorie',)
+     search_fields  = ('numero', 'reference','categorie',)
      fieldsets = (
         ("Informations obligatoires", {
-            'fields': ('nomImmeuble','zone','categorie','proprietaire','adresse')
+            'fields': ('reference','zone','categorie','proprietaire','adresse')
         }), 
         ("Informations non obligatoires", {
             'fields': ('etat','photo','description',)
@@ -45,12 +45,12 @@ class ImmeubleAdmin(admin.ModelAdmin):
     )
 class MaisonAdmin(admin.ModelAdmin):
      exclude = ('numero',)
-     list_display   = ('numero','nomBien','proprietaire','zone')
+     list_display   = ('numero','reference','proprietaire','zone')
      list_filter    = ('proprietaire__numero','statut','zone')
-     search_fields  = ('numero', 'nomBien')
+     search_fields  = ('numero', 'reference')
      fieldsets = (
         ("Informations obligatoires", {
-            'fields': ('nomBien','zone','nbrPiece','typePiece','proprietaire')
+            'fields': ('reference','zone','nbrPiece','typePiece','proprietaire')
         }), 
         ("Informations non obligatoires", {
             'fields': ('etat','photo','description',)

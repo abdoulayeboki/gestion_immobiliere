@@ -24,14 +24,18 @@ class Appartement(BienImmobilier):
         self.zone = self.immeuble.zone
         self.proprietaire = self.immeuble.proprietaire
         self.etat = self.immeuble.etat
+        reference = self.immeuble.reference #on recupere la reference de l'immeuble
         print()
         if not self.numero:
             if  Appartement.objects.count() !=0: #si la table est vide
                 last = Appartement.objects.latest('id')
                 numero = "APP_"+"%06d" % (last.id+1,)
+                reference = reference+"-"+"%02d" % (last.id+1,)
             else:
                 numero = "APP_"+"%06d" % (1,)
+                reference = reference+"-"+"%02d" % (1,)
             self.numero = numero
+            self.reference = reference
         super().save(*args, **kwargs) 
     # def clean(self):
        

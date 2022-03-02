@@ -9,7 +9,7 @@ def upload_path(instance, filename):
     return '/'.join(['media',str(instance.numero), filename])
 
 class Location(models.Model):
-    numero = models.CharField(max_length=20, unique=True)
+    numero = models.CharField(max_length=20, unique=True,blank=True)
     loyer = models.FloatField()
     charge = models.FloatField() 
     montantCommission = models.FloatField()         

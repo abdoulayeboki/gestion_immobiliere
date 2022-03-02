@@ -9,7 +9,7 @@ def upload_path(instance, filename):
     return '/'.join(['media',str(instance.numero), filename])
 class Immeuble(models.Model):
     numero = models.CharField(max_length=20, unique=True)
-    nomImmeuble = models.CharField(max_length=100)
+    reference = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True,null=True,)
     photo = models.ImageField(blank=True,null=True, upload_to=upload_path) 
     adresse = models.CharField(max_length=200)

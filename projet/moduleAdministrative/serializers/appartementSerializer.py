@@ -12,4 +12,4 @@ class AppartementSerializer(serializers.ModelSerializer):
     class Meta:
         model = Appartement
         exclude =[]
-        # fields = ['numero','nomBien','prixMensuel','chargeMensuel']
+        # fields = ['numero','reference','prixMensuel','chargeMensuel']
