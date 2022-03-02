@@ -13,7 +13,7 @@ class Proprietaire(models.Model):
         # unique_together = [['cni'],['user']]
         
     def __str__(self):
-        return self.prenom
+        return self.prenom +" "+self.nom
     def save(self, *args, **kwargs):
         if not self.numero:
             if  Proprietaire.objects.count() !=0: #si la table est vide

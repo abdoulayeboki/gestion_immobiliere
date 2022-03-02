@@ -18,7 +18,7 @@ class Appartement(BienImmobilier):
         # unique_together = [['cni'],['user']]
         
     def __str__(self):
-        return self.numero
+        return self.reference
     def save(self, *args, **kwargs):
         self.adresse = self.immeuble.adresse
         self.zone = self.immeuble.zone

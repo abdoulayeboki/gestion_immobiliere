@@ -23,7 +23,7 @@ class Immeuble(models.Model):
         # unique_together = [['cni'],['user']]
         
     def __str__(self):
-        return self.numero
+        return self.reference
     def save(self, *args, **kwargs):
         if not self.numero:
             if  Immeuble.objects.count() !=0: #si la table est vide

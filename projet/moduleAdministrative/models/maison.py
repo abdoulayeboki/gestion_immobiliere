@@ -11,7 +11,7 @@ class Maison(BienImmobilier):
         # unique_together = [['cni'],['user']]
         
     def __str__(self):
-        return self.typePiece
+        return self.reference
     def save(self, *args, **kwargs):
         if not self.numero:
             if  Maison.objects.count() !=0: #si la table est vide

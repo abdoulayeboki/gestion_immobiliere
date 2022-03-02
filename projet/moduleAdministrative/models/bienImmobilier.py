@@ -22,7 +22,7 @@ class BienImmobilier(models.Model):
         # unique_together = [['cni'],['user']]
         
     def __str__(self):
-        return self.numero
+        return self.reference
     # def save(self, *args, **kwargs):
     #     super().save(*args, **kwargs) 
     # def clean(self):

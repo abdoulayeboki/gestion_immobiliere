@@ -11,15 +11,18 @@ def upload_path(instance, filename):
 class Location(models.Model):
     numero = models.CharField(max_length=20, unique=True,blank=True)
     loyer = models.FloatField()
-    charge = models.FloatField() 
-    montantCommission = models.FloatField()         
+    chargeMensuelle = models.FloatField()
+    chargeAjoute= models.FloatField(default=0) 
+    montantDepart = models.FloatField(default=0)
+    fraisCommission = models.FloatField(default=0)         
     debutBail = models.DateField()
     finBail = models.DateField()
     pourcentageTaxe = models.FloatField()
+    pourcentageCommission = models.FloatField(default=5)
     soldeAnterieur = models.FloatField(default=0)
     cretedDate = models.DateTimeField(auto_now_add=True)
     contratBail = models.FileField(blank=True,null=True, upload_to=upload_path)
-    jourEcheace = models.CharField(max_length=15,choices= [(j.value, j.value) for j in JourEcheace],default="semaine_1") 
+    jourEcheance = models.CharField(max_length=15,choices= [(j.value, j.value) for j in JourEcheace],default="semaine_1") 
     locataire = models.ForeignKey(Locataire,on_delete=models.CASCADE,related_name="locations")
     bienImmobilier = models.ForeignKey(BienImmobilier,on_delete=models.CASCADE,related_name="locations")
     
@@ -30,6 +33,7 @@ class Location(models.Model):
     def __str__(self):
         return self.numero
     def save(self, *args, **kwargs):
+        self.fraisCommission = (self.loyer * self.pourcentageCommission)/100
         if not self.numero:
             if  Location.objects.count() !=0: #si la table est vide
                 last = Location.objects.latest('id')
