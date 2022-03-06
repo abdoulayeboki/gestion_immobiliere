@@ -44,8 +44,10 @@ INSTALLED_APPS = [
     'moduleAdministrative.apps.ModuleadministrativeConfig',
     'moduleLocative.apps.ModulelocativeConfig',
     'rest_framework',
+    "corsheaders",
+    'django_filters',
 ]
-
+ 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -54,6 +56,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
     
 ]
 
@@ -108,6 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -140,3 +146,17 @@ JAZZMIN_SETTINGS = {
     "site_header": "Library",
 }
 
+# Permettre a notre front d'acceder à notre api
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:4200", 
+# ]
+# CORS_ALLOW_ALL_ORIGINS=True
+CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_WHITELIST = (
+#     "http://localhost:4200",
+# )
+# ALLOWED_HOSTS = ['XXX.iptime.org', 'localhost', '127.0.0.1', 'testserver']
+# REST_FRAMEWORK = {
+#     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+#     'PAGE_SIZE': 5
+# }

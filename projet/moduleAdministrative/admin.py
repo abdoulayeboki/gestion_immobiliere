@@ -50,7 +50,7 @@ class MaisonAdmin(admin.ModelAdmin):
      search_fields  = ('numero', 'reference')
      fieldsets = (
         ("Informations obligatoires", {
-            'fields': ('reference','zone','nbrPiece','typePiece','proprietaire')
+            'fields': ('reference','zone','nbrPiece','typePiece','proprietaire','adresse')
         }), 
         ("Informations non obligatoires", {
             'fields': ('etat','photo','description',)

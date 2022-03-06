@@ -1,3 +1,4 @@
+from rest_framework import filters
 from django.shortcuts import render
 from rest_framework import generics
 
@@ -10,13 +11,16 @@ from .models.proprietaire import Proprietaire
 from .serializers.appartementSerializer import AppartementSerializer
 from .serializers.immeubleSerializer import ImmeubleSerializer
 from .serializers.proprietaireSerializer import ProprietaireSerializer
+from django_filters.rest_framework import DjangoFilterBackend
+
 # Create your views here.
 # view Departement   
 class AppartementList(generics.ListAPIView):
     queryset = Appartement.objects.all()
     serializer_class = AppartementSerializer
-    # filter_backends = [filters.SearchFilter]
-    # search_fields = ['nom','code']
+    filter_backends = [DjangoFilterBackend,filters.SearchFilter]
+    search_fields = ['numero','reference']
+    filterset_fields = ['numero','reference']
 class AppartementOne(generics.RetrieveAPIView): # new
     queryset = Appartement.objects.all()
     serializer_class = AppartementSerializer  
