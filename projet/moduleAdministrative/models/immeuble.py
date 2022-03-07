@@ -28,8 +28,8 @@ class Immeuble(models.Model):
         if not self.numero:
             if  Immeuble.objects.count() !=0: #si la table est vide
                 last = Immeuble.objects.latest('id')
-                numero = "IMM_"+"%06d" % (last.id+1,)
+                numero = "IMM-"+"%03d" % (last.id+1,)
             else:
-                numero = "IMM_"+"%06d" % (1,)
+                numero = "IMM-"+"%03d" % (1,)
             self.numero = numero
         super().save(*args, **kwargs)

@@ -29,10 +29,10 @@ class Appartement(BienImmobilier):
         if not self.numero:
             if  Appartement.objects.count() !=0: #si la table est vide
                 last = Appartement.objects.latest('id')
-                numero = "APP_"+"%06d" % (last.id+1,)
+                numero = "APP-"+"%03d" % (last.id+1,)
                 reference = reference+"-"+"%02d" % (last.id+1,)
             else:
-                numero = "APP_"+"%06d" % (1,)
+                numero = "APP-"+"%03d" % (1,)
                 reference = reference+"-"+"%02d" % (1,)
             self.numero = numero
             self.reference = reference

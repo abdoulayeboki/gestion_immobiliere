@@ -20,7 +20,7 @@ class Location(models.Model):
     pourcentageTaxe = models.FloatField()
     pourcentageCommission = models.FloatField(default=5)
     soldeAnterieur = models.FloatField(default=0)
-    cretedDate = models.DateTimeField(auto_now_add=True)
+    createdDate = models.DateTimeField(auto_now_add=True)
     contratBail = models.FileField(blank=True,null=True, upload_to=upload_path)
     jourEcheance = models.CharField(max_length=15,choices= [(j.value, j.value) for j in JourEcheace],default="semaine_1") 
     locataire = models.ForeignKey(Locataire,on_delete=models.CASCADE,related_name="locations")
@@ -37,9 +37,9 @@ class Location(models.Model):
         if not self.numero:
             if  Location.objects.count() !=0: #si la table est vide
                 last = Location.objects.latest('id')
-                numero = "LOCATION_"+"%06d" % (last.id+1,)
+                numero = "L-"+"%03d" % (last.id+1,)
             else:
-                numero = "LOCATION__"+"%06d" % (1,)
+                numero = "L_-"+"%03d" % (1,)
             self.numero = numero
         super().save(*args, **kwargs) 
     @property

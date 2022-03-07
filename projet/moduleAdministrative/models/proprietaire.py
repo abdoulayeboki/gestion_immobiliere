@@ -18,8 +18,8 @@ class Proprietaire(models.Model):
         if not self.numero:
             if  Proprietaire.objects.count() !=0: #si la table est vide
                 last = Proprietaire.objects.latest('id')
-                numero = "PRO_"+"%06d" % (last.id+1,)
+                numero = "P-"+"%03d" % (last.id+1,)
             else:
-                numero = "PRO_"+"%06d" % (1,)
+                numero = "P-"+"%03d" % (1,)
             self.numero = numero
         super().save(*args, **kwargs)

@@ -16,9 +16,9 @@ class Maison(BienImmobilier):
         if not self.numero:
             if  Maison.objects.count() !=0: #si la table est vide
                 last = Maison.objects.latest('id')
-                numero = "M_"+"%06d" % (last.id+1,)
+                numero = "M-"+"%03d" % (last.id+1,)
             else:
-                numero = "M_"+"%06d" % (1,)
+                numero = "M-"+"%03d" % (1,)
             self.numero = numero
         super().save(*args, **kwargs)
     def clean(self):
