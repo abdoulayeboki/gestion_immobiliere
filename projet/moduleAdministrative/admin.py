@@ -24,7 +24,7 @@ class AppartementAdmin(admin.ModelAdmin):
      search_fields  = ('numero','reference')
      fieldsets = (
         ("Informations obligatoires", {
-            'fields': ('typeAppartement','niveau','immeuble')
+            'fields': ('typeAppartement','niveau','lettre','immeuble')
         }), 
         ("Informations non obligatoires", {
             'fields': ('photo','description',)

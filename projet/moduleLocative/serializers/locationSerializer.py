@@ -12,13 +12,15 @@ class LocataireSerializer(serializers.ModelSerializer):
         # exclude =[]
         fields = "__all__"
 class LocationSerializer(serializers.ModelSerializer):
-    locataire =  LocataireSerializer(write_only=True)
+    locataire =  LocataireSerializer(read_only=True)
     bienImmobilier =  BienImmoblierSerializer(read_only=True)
     class Meta:
         model = Location
-        # exclude =[]
         fields = "__all__"
-
+class LocationPostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Location
+        fields = "__all__"
 class EtatDesLieuxSerializer(serializers.ModelSerializer):
     class Meta:
         model = EtatDesLieux

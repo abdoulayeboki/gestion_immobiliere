@@ -1,6 +1,6 @@
 from rest_framework import generics
 
-from .serializers.locationSerializer import EtatDesLieuxSerializer, LocataireSerializer, LocationSerializer
+from .serializers.locationSerializer import EtatDesLieuxSerializer, LocataireSerializer, LocationPostSerializer, LocationSerializer
 
 from .models.location import Location
 from .models.locataire import Locataire
@@ -19,7 +19,11 @@ class LocataireDetail(generics.RetrieveUpdateAPIView): # new
 # location serializer
 class LocationList(generics.ListCreateAPIView):
     queryset = Location.objects.all()
-    serializer_class = LocationSerializer
+    serializer_class = LocationSerializer 
+class LocationCreate(generics.CreateAPIView):
+    queryset = Location.objects.all()
+    serializer_class = LocationPostSerializer
+    
 class LocationDetail(generics.RetrieveUpdateAPIView): # new
     queryset = Location.objects.all()
     serializer_class = LocationSerializer 

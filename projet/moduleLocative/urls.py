@@ -1,10 +1,11 @@
 from django.urls import path
 
-from .views import  LocationList, LocationDetail, LocataireList, LocataireDetail, EtatDesLieuxList, EtatDesLieuxDetail
+from .views import  LocationCreate, LocationList, LocationDetail, LocataireList, LocataireDetail, EtatDesLieuxList, EtatDesLieuxDetail
 
 
 urlpatterns = [
     path('locations/', LocationList.as_view(), name='location_list'),
+    path('locations_create/', LocationCreate.as_view(), name='location_create'),
     path('etat_des_lieux/', EtatDesLieuxList.as_view(), name='etat_des_lieux_list'),
     path('locataires/', LocataireList.as_view(), name='locataire_list'),
     path('locations/<int:pk>/', LocationDetail.as_view(), name='location_detail'),

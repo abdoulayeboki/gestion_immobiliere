@@ -1,5 +1,7 @@
 from django.db import IntegrityError, models
 
+from moduleLocative.models.enumeration import Lettre
+
 
 from .immeuble import Immeuble
 from  .bienImmobilier import BienImmobilier
@@ -11,11 +13,11 @@ class Appartement(BienImmobilier):
     typeAppartement = models.CharField(max_length=6,choices= [(t.value, t.value) for t in TypeAppartement])
     niveau = models.CharField(max_length=50,choices= [(n.value, n.value) for n in Niveau])
     immeuble = models.ForeignKey(Immeuble,on_delete=models.CASCADE)
-    
+    lettre = models.CharField(max_length=1,choices= [(l.value, l.value) for l in Lettre])
     
     class Meta:
         pass
-        # unique_together = [['cni'],['user']]
+        unique_together = ['lettre','niveau']
         
     def __str__(self):
         return self.reference
@@ -24,18 +26,16 @@ class Appartement(BienImmobilier):
         self.zone = self.immeuble.zone
         self.proprietaire = self.immeuble.proprietaire
         self.etat = self.immeuble.etat
-        reference = self.immeuble.reference #on recupere la reference de l'immeuble
+        self.reference =self.lettre +'-' + self.immeuble.reference  #on recupere la reference de l'immeuble
         print()
         if not self.numero:
+            
             if  Appartement.objects.count() !=0: #si la table est vide
                 last = Appartement.objects.latest('id')
                 numero = "APP-"+"%03d" % (last.id+1,)
-                reference = reference+"-"+"%02d" % (last.id+1,)
             else:
                 numero = "APP-"+"%03d" % (1,)
-                reference = reference+"-"+"%02d" % (1,)
             self.numero = numero
-            self.reference = reference
         super().save(*args, **kwargs) 
     # def clean(self):
        
