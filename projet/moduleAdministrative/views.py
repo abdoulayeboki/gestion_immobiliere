@@ -20,13 +20,15 @@ class AppartementList(generics.ListAPIView):
     serializer_class = AppartementSerializer
     filter_backends = [DjangoFilterBackend,filters.SearchFilter]
     search_fields = ['numero','reference']
-    filterset_fields = ['numero','reference']
+    filterset_fields = ['numero','reference','statut']
 class AppartementOne(generics.RetrieveAPIView): # new
     queryset = Appartement.objects.all()
     serializer_class = AppartementSerializer  
 class MaisonList(generics.ListAPIView):
     queryset = Maison.objects.all()
     serializer_class = MaisonSerializer
+    filter_backends = [DjangoFilterBackend,filters.SearchFilter]
+    filterset_fields = ['numero','reference','statut']
 class MaisonOne(generics.RetrieveAPIView): # new
     queryset = Maison.objects.all()
     serializer_class = MaisonSerializer 

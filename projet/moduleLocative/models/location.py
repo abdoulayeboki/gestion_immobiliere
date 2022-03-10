@@ -11,13 +11,13 @@ def upload_path(instance, filename):
 class Location(models.Model):
     numero = models.CharField(max_length=20, unique=True,blank=True)
     loyer = models.FloatField()
-    chargeMensuelle = models.FloatField()
+    chargeMensuelle = models.FloatField(default=0)
     chargeAjoute= models.FloatField(default=0) 
     montantDepart = models.FloatField(default=0)
     fraisCommission = models.FloatField(default=0)         
     debutBail = models.DateField()
-    finBail = models.DateField()
-    pourcentageTaxe = models.FloatField()
+    finBail = models.DateField(default="")
+    pourcentageTaxe = models.FloatField(default=0)
     pourcentageCommission = models.FloatField(default=5)
     soldeAnterieur = models.FloatField(default=0)
     createdDate = models.DateTimeField(auto_now_add=True)
@@ -51,6 +51,14 @@ class Location(models.Model):
     @property
     def ttc(self):
         return self.tva + self.loyer
+    
+    # @receiver(pre_save, sender=BienImmobilier)
+    # def pre_saveLocation(sender, instance,created, **kwargs):
+    #     Location.objects.filter(pk=1).update(montantDepart=90000)
+    #     print(instance.bienImmobilier.id)
+    
+ 
+
     def clean(self):
         pass
         # from django.core.exceptions import ValidationError
@@ -58,4 +66,5 @@ class Location(models.Model):
         #     raise ValidationError('la charge mensuelle ne devrait pas etre supérieur au prix mensuel')
         # if self.prixMensuel <10000:
         #     raise ValidationError('le prix doit etre supérieur à 10000')
+    
     

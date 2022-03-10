@@ -23,11 +23,10 @@ class LocationList(generics.ListCreateAPIView):
 class LocationCreate(generics.CreateAPIView):
     queryset = Location.objects.all()
     serializer_class = LocationPostSerializer
-    
-class LocationDetail(generics.RetrieveUpdateAPIView): # new
+     
+class LocationDetail(generics.RetrieveUpdateDestroyAPIView): # new
     queryset = Location.objects.all()
-    serializer_class = LocationSerializer 
-    
+    serializer_class = LocationSerializer     
 # etatdeslieux serializer
 class EtatDesLieuxList(generics.ListCreateAPIView):
     queryset = EtatDesLieux.objects.all()
