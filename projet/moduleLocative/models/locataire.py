@@ -18,8 +18,8 @@ class Locataire(models.Model):
         if not self.numero:
             if  Locataire.objects.count() !=0: #si la table est vide
                 last = Locataire.objects.latest('id')
-                numero = "LCT-"+"%06d" % (last.id+1,)
+                numero = "LCT-"+"%04d" % (last.id+1,)
             else:
-                numero = "LCT-"+"%06d" % (1,)
+                numero = "LCT-"+"%04d" % (1,)
             self.numero = numero
         super().save(*args, **kwargs)

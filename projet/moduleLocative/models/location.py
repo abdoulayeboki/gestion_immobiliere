@@ -37,9 +37,9 @@ class Location(models.Model):
         if not self.numero:
             if  Location.objects.count() !=0: #si la table est vide
                 last = Location.objects.latest('id')
-                numero = "L-"+"%03d" % (last.id+1,)
+                numero = "L-"+"%04d" % (last.id+1,)
             else:
-                numero = "L_-"+"%03d" % (1,)
+                numero = "L-"+"%04d" % (1,)
             self.numero = numero
         super().save(*args, **kwargs) 
     @property
