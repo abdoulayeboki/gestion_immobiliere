@@ -30,3 +30,18 @@ les lien utils
 ------------------------------------------------------------------------------------------------------------------------
 
 python manage.py createsuperuser --username admin --email admin@gmail.com
+
+------------------------------------------------------------------------------------------------------------------------
+lancer 
+
+docker-compose up
+------------------------------------------------------------------------------------------------------------------------
+postgres
+ connect:  psql -U postgres
+ create db: createdb -U postgres gestion_immo
+
+heroku
+ heroku config:set SECRET_KEY=sfgfdghdgdhgdghghdsghdghsdghghdhgdhgddh
+ heroku config:set EMAIL_USER=sarrabdoulaye93@gmail.com
+ heroku config:set EMAIL_PASSWORD=python.classesmates.pass 
+ pip install django-heroku

@@ -12,7 +12,7 @@ class LocataireList(generics.ListCreateAPIView):
     serializer_class = LocataireSerializer
     # filter_backends = [filters.SearchFilter]
     # search_fields = ['nom','code']
-class LocataireDetail(generics.RetrieveUpdateAPIView): # new
+class LocataireDetail(generics.RetrieveUpdateDestroyAPIView): # new
     queryset = Locataire.objects.all()
     serializer_class = LocataireSerializer  
 

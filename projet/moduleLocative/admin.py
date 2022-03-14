@@ -18,5 +18,5 @@ class LocataireAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Locataire,LocataireAdmin)
-admin.site.register(Location)
-admin.site.register(EtatDesLieux)
+# admin.site.register(Location)
+# admin.site.register(EtatDesLieux)
