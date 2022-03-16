@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
-import django_heroku
+# import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-=e5^x#8-2)y$lfpa#s6p@l*b8vtwkudf@p*v^wc@$#o-srw^2-
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False if os.environ.get("ENV","development")=="production" else True
-ALLOWED_HOSTS = ['.herokuapps.com','localhost','127.0.0.1']
+# ALLOWED_HOSTS = ['.herokuapps.com','localhost','127.0.0.1']
 
 
 # Application definition
@@ -88,18 +88,18 @@ WSGI_APPLICATION = 'projet.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # },
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'gestion_immo',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',
-        'PORT': 5432
-    }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    },
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'gestion_immo',
+    #     'USER': 'postgres',
+    #     'PASSWORD': 'postgres',
+    #     'HOST': 'localhost',
+    #     'PORT': 5432
+    # }
 }
 
 
@@ -149,7 +149,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #statict conf
 STATIC_URL = '/static/'
-STATIC_ROOT =os.path.join(BASE_DIR,'staticfiles')
+# STATIC_ROOT =os.path.join(BASE_DIR,'staticfiles')
 #jazzmin
 JAZZMIN_SETTINGS = {
     "site_header": "Library",
@@ -171,4 +171,4 @@ CORS_ORIGIN_ALLOW_ALL = True
 # }
 
 # Activate Django-Heroku.
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
