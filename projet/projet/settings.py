@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
-# import django_heroku
+import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,10 +27,10 @@ SECRET_KEY = 'django-insecure-=e5^x#8-2)y$lfpa#s6p@l*b8vtwkudf@p*v^wc@$#o-srw^2-
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False if os.environ.get("ENV","development")=="production" else True
-# ALLOWED_HOSTS = ['.herokuapps.com','localhost','127.0.0.1']
+ALLOWED_HOSTS = ['.herokuapps.com','localhost','127.0.0.1']
 
 
-# Application definition
+# Application definitiony
 
 INSTALLED_APPS = [
     # 'admin_interface',
@@ -57,7 +57,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     
@@ -171,4 +170,4 @@ CORS_ORIGIN_ALLOW_ALL = True
 # }
 
 # Activate Django-Heroku.
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
