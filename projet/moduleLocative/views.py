@@ -16,7 +16,7 @@ class LocataireDetail(generics.RetrieveUpdateDestroyAPIView): # new
     queryset = Locataire.objects.all()
     serializer_class = LocataireSerializer  
 
-# location serializer
+# location view
 class LocationList(generics.ListCreateAPIView):
     queryset = Location.objects.all()
     serializer_class = LocationSerializer 
@@ -27,7 +27,7 @@ class LocationCreate(generics.CreateAPIView):
 class LocationDetail(generics.RetrieveUpdateDestroyAPIView): # new
     queryset = Location.objects.all()
     serializer_class = LocationSerializer     
-# etatdeslieux serializer
+# etatdeslieux view
 class EtatDesLieuxList(generics.ListCreateAPIView):
     queryset = EtatDesLieux.objects.all()
     serializer_class = EtatDesLieuxSerializer
