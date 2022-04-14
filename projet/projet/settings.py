@@ -171,15 +171,15 @@ CORS_ORIGIN_ALLOW_ALL = True
 #     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
 #     'PAGE_SIZE': 5
 # }
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication'
-    ],
-    'EXCEPTION_HANDLER': 'projet.utils.custom_exception_handler'
-}
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.IsAuthenticated',
+#     ],
+#     'DEFAULT_AUTHENTICATION_CLASSES': [
+#         'rest_framework_simplejwt.authentication.JWTAuthentication'
+#     ],
+#     'EXCEPTION_HANDLER': 'projet.utils.custom_exception_handler'
+# }
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())

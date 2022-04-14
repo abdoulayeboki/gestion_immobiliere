@@ -9,7 +9,7 @@ def upload_path(instance, filename):
 
 class BienImmobilier(models.Model):
     numero = models.CharField(max_length=20, unique=True)
-    reference = models.CharField(max_length=100, unique=True)    
+    reference = models.CharField(max_length=100)    
     statut = models.BooleanField(default=False)
     photo = models.ImageField(blank=True,null=True, upload_to=upload_path) 
     adresse = models.CharField(max_length=200)

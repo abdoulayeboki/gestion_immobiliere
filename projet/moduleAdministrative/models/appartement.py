@@ -17,7 +17,7 @@ class Appartement(BienImmobilier):
     
     class Meta:
         pass
-        unique_together = ['lettre','niveau']
+        # unique_together = ['lettre','niveau']
         
     def __str__(self):
         return self.reference
